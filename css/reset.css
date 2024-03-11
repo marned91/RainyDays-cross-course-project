@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Cambay:ital,wght@0,400;0,700;1,400;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0%;
+}
+
+h1, h2 {
+    font-family: "lato";
+}
+
+h3, p, .button {
+    font-family: "public Sans";
+}
+
+nav a, footer, label, input {
+    font-family: "cambay";
+}
+
+.logo {
+    align-self: center;
+}
+
+.logo-header, .logo-footer {
+    width: 100px;
+}
+
+.header, footer, .button {
+    background-color: black;
+}
+
+.header, footer, .logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo, .header {
+    justify-content: center;
+}
+
+.logo {
+    padding: 5px 0px;
+}
+
+.header {
+    justify-content: space-between;
+}
+
+.nav-desktop li {
+    display: inline-block;
+    padding-inline: 20px;
+}
+
+.cart {
+    margin-right: 50px;
+}
+
+nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a, a {
+    text-decoration: none;
+}
+
+.hamburger-icon, .fa-solid, nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a, .button {
+    color: white;
+}
+
+
+#menu-checkbox {
+    display: none;
+}
+
+.hamburger-menu:has(#menu-checkbox:checked) ~ .nav-mobile, .footer-social{
+    display: block;
+}
+
+.nav-mobile ul{
+    list-style: none;
+    line-height: 50px;
+    position: absolute;
+    left: 0px;
+    width: 60%;
+    padding: 10px;
+    background-color: black;
+}
+
+.nav-mobile {
+    top: 30px;
+}
+.nav-mobile a {
+    margin-left: 40px;
+}
+
+.hamburger-icon {
+    margin-left: 50px;
+}
+
+.hamburger-icon, #cart-icon {
+    font-size: 20px;
+}
+
+footer {
+    justify-content: space-around;
+    gap: 200px;
+}
+
+footer a {
+    display: block;
+}
+
+.p-bold {
+    font-weight: bold;
+}
+
+.button {
+    padding: 10px 60px;
+    border-radius: 10px;
+
+}
+
+
+/*mobile and small tablets*/
+@media screen and (min-width: 300px) and (max-width: 600px) {
+    .nav-desktop, .nav-mobile {
+        display: none;
+    }
+
+    .header {
+        height: 30px;
+        padding: 10px 0px;
+    }
+
+    footer {
+        gap: 0px;
+        padding: 10px 0px;
+    }
+
+}
+
+/*smaller and lagrer tablets*/
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .nav-desktop, .nav-mobile {
+        display: none;
+    }
+
+    .header {
+        padding: 10px 0px;
+    }
+
+}
+
+/*laptop and desktop*/
+@media screen and (min-width: 901px) and (max-width: 20000px){
+    .nav-mobile, .hamburger-icon {
+        display: none;
+    }
+
+    footer {
+        gap: 200px;
+    }
+
+}

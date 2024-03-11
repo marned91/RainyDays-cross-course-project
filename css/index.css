@@ -1,0 +1,25 @@
+.home-intro{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-info {
+    flex: 1;
+    line-height: 30px;
+    margin: auto;
+}
+
+.home-info p {
+    max-width: 80%;
+}
+
+.home-image {
+    flex-grow: 0,5;
+}
+
+.home-img {
+    width: 100%;
+    height: auto;
+}
