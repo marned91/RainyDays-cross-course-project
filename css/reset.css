@@ -10,6 +10,10 @@ h1, h2 {
     font-family: "lato";
 }
 
+h1 {
+    color: #0A3641;
+}
+
 h3, p, .button {
     font-family: "public Sans";
 }
@@ -94,20 +98,29 @@ nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a,
     margin-left: 50px;
 }
 
-.hamburger-icon, #cart-icon {
+.hamburger-menu {
+    margin-top: 5px;
+}
+
+#cart-icon {
     font-size: 20px;
+}
+
+.hamburger-icon{
+    font-size: 22px;
 }
 
 footer {
     justify-content: space-around;
     gap: 200px;
+    padding: 20px 0px;
 }
 
 footer a {
     display: block;
 }
 
-.p-bold {
+.p-bold, .price {
     font-weight: bold;
 }
 
@@ -131,7 +144,6 @@ footer a {
 
     footer {
         gap: 0px;
-        padding: 10px 0px;
     }
 
 }

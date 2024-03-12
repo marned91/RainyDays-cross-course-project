@@ -1,25 +1,194 @@
-.home-intro{
+.home-intro, .fabric, .popular-jackets{
     display: flex;
-    gap: 20px;
-    align-items: center;
     justify-content: center;
 }
 
+.home-intro, .fabric, .popular-jackets, .popular-jacket {
+    align-items: center;
+}
+
 .home-info {
-    flex: 1;
-    line-height: 30px;
-    margin: auto;
+    line-height: 35px;
 }
 
 .home-info p {
     max-width: 80%;
 }
 
-.home-image {
-    flex-grow: 0,5;
+.fabric {
+    gap: 30px;
+    padding: 100px 0px;
 }
 
-.home-img {
+.fabric-info {
+    max-width: 50%;
+}
+
+.fabric-info, .popular-jacket{
+    flex: 1; 
+}
+
+.fabric-info, .popular-jackets h2 {
+    text-align: center;
+}
+
+.popular-jackets {
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+    gap: 10px;
+}
+
+.popular-jackets h2 {
+    flex: 100%;
+    color: white;
+    background-color: black;
+    padding: 10px; 
+}
+
+.popular-jacket {
+    margin: 0px 10px;
+}
+
+.popular-jackets-text {
+    max-width: 95%;
+    height: 60px;
+    line-height: 25px;
+}
+
+.popular-jacket-img {
     width: 100%;
     height: auto;
+}
+
+/*mobile and small tablets*/
+@media screen and (min-width: 300px) and (max-width: 600px){
+    .home-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .home-intro {
+        gap: 10px;
+    }
+
+    .fabric {
+        background-color: #757579;
+        color: white;
+        padding: 30px 20px;
+        margin: 40px 0px;
+    }
+
+    .home-intro, .fabric {
+        flex-wrap: wrap;
+    }
+
+    .home-info, .fabric-info {
+        margin: 0px 20px;
+    }
+
+    .home-info p,.fabric-info  {
+        max-width: 100%;
+    }
+
+    .fabric-icon-mobile {
+        width: 50px;
+    }
+
+    .home-h1-desktop, .fabric-icon-desktop {
+        display: none;
+    }
+
+    .fabric-info, .popular-jacket{
+        flex: 100%;
+    }
+
+    .fabric-info {
+        text-align: left;
+    }
+
+    .popular-jacket {
+        margin: 0px;
+    }
+
+    .popular-jackets-text {
+        height: auto;
+        line-height: 20px;
+        margin: 0px 20px;
+    }
+
+}
+
+/*smaller and lagrer tablets*/
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .home-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .home-intro {
+        gap: 10px;
+    }
+
+    .fabric {
+        background-color: #757579;
+        color: white;
+        padding: 30px 20px;
+        margin: 40px 0px;
+    }
+
+    .home-intro, .fabric {
+        flex-wrap: wrap;
+    }
+
+    .home-info, .fabric-info {
+        margin: 0px 20px;
+    }
+
+    .home-info p, .fabric-info {
+        max-width: 100%;
+    }
+
+    .fabric-icon-mobile {
+        width: 60px;
+    }
+
+    .home-h1-desktop, .fabric-icon-desktop {
+        display: none;
+    }
+
+    .fabric-info {
+        flex: 100%;
+        text-align: left;
+    }
+
+    .popular-jacket {
+        margin: 0px;
+    }
+
+    .popular-jackets-text {
+        height: 100px;
+        line-height: 20px;
+        margin: 0px 20px;
+    }
+
+}
+
+/*laptop and desktop*/
+@media screen and (min-width: 901px) and (max-width: 20000px){
+    .home-info {
+        margin-left: 100px;
+    }
+    .home-img {
+        width: 110%;
+        height: auto;
+    }
+
+    .fabric-icon-desktop {
+        width: 70px;
+    }
+
+    .home-h1-mobile, .fabric-icon-mobile {
+        display: none;
+    }
+    
 }
