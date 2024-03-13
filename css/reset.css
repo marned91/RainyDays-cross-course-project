@@ -69,8 +69,11 @@ nav a, footer, label, input {
 }
 
 .nav-desktop li {
-    display: inline-block;
     padding-inline: 20px;
+}
+
+.nav-desktop li, .button{
+    display: inline-block;
 }
 
 .cart {
@@ -144,15 +147,20 @@ footer a {
 }
 
 .button {
-    padding: 10px 60px;
+    padding: 5px 60px;
     border-radius: 10px;
+    object-fit: cover;
+    transition: transform 200ms ease-in;
+}
 
+.button:hover {
+    transform: scale(1.09);
 }
 
 
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px) {
-    .nav-desktop, .nav-mobile {
+    .nav-desktop, .nav-mobile, .h1-desktop {
         display: none;
     }
 
@@ -189,7 +197,7 @@ footer a {
 
 /*smaller and lagrer tablets*/
 @media screen and (min-width: 601px) and (max-width: 900px) {
-    .nav-desktop, .nav-mobile {
+    .nav-desktop, .nav-mobile, .h1-desktop {
         display: none;
     }
 
@@ -217,7 +225,7 @@ footer a {
 
 /*laptop and desktop*/
 @media screen and (min-width: 901px) and (max-width: 20000px){
-    .nav-mobile, .hamburger-icon {
+    .nav-mobile, .hamburger-icon, .h1-mobile {
         display: none;
     }
 

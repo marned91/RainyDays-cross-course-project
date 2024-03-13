@@ -103,7 +103,7 @@
         width: 50px;
     }
 
-    .home-h1-desktop, .fabric-icon-desktop {
+    .fabric-icon-desktop {
         display: none;
     }
 
@@ -161,7 +161,7 @@
         width: 60px;
     }
 
-    .home-h1-desktop, .fabric-icon-desktop {
+    .fabric-icon-desktop {
         display: none;
     }
 
@@ -196,7 +196,7 @@
         width: 70px;
     }
 
-    .home-h1-mobile, .fabric-icon-mobile {
+    .fabric-icon-mobile {
         display: none;
     }
     

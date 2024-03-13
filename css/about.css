@@ -1,0 +1,83 @@
+.about-intro, .about-team {
+    display: flex;
+    justify-content: center;
+}
+
+.about-intro, .about-team, .about-expect{
+    align-items: center;
+}
+
+.about_intro_img, .about_team_img {
+    width: 100%;
+    height: auto;
+}
+
+.about-intro-text {
+    max-width: 40%;
+}
+
+.about-intro-text, .about-team-text {
+    line-height: 25px;
+}
+
+.about-intro-text h1, .about-intro-text p{
+    margin: 30px;
+}
+
+.about-expect {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    background-color: #757579;
+    color: white;
+    margin-top: -4px;
+    padding: 90px 0px;
+}
+
+.about-expect h2 {
+    grid-column: -1/1;
+}
+
+.about-expect h2, .about-expect p{
+    margin: 20px 100px;
+}
+
+.about-expect-text{
+    font-weight: lighter;
+}
+
+.about-team-text {
+    margin: 10px 100px;
+}
+
+.about-team-text p {
+    max-width: 90%;
+    padding-bottom: 20px;
+}
+
+/*mobile and small tablets*/
+@media screen and (min-width: 300px) and (max-width: 600px){
+    .about-intro {
+        flex-wrap: wrap-reverse;
+    }
+
+    .about-intro-text {
+        max-width: 100%;
+    }
+
+    .about-expect {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/*smaller and lagrer tablets*/
+@media screen and (min-width: 601px) and (max-width: 900px){
+
+}
+
+/*laptop and desktop*/
+@media screen and (min-width: 901px) and (max-width: 20000px){
+
+}
