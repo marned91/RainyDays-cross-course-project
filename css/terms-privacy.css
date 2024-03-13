@@ -1,0 +1,49 @@
+.terms-content h2, .privacy-content h2 {
+    background-color: #757579;
+    color: white;
+    padding: 10px;
+}
+.last-update {
+    font-style: italic;
+}
+
+.terms-content, .last-update, .privacy-content {
+    padding-bottom: 20px;
+    line-height: 25px;
+}
+
+/*mobile and small tablets*/
+@media screen and (min-width: 300px) and (max-width: 600px){
+    .terms-intro, .terms-content, .privacy-content, .privacy-intro  {
+        margin: 0px 10px;
+    }
+
+    .terms-intro, .privacy-intro  {
+        padding-top: 10px;
+    }
+
+}
+
+/*smaller and lagrer tablets*/
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .terms-intro, .terms-content, .privacy-content, .privacy-intro  {
+        margin: 0px 20px;
+    }
+
+    .terms-intro, .privacy-intro {
+        padding-top: 10px;
+    }
+
+}
+
+/*laptop and desktop*/
+@media screen and (min-width: 901px) and (max-width: 20000px){
+    .terms-intro, .terms-content, .privacy-intro, .privacy-content {
+        margin: 0px 50px;
+    }
+
+    .terms-intro, .privacy-intro  {
+        padding-top: 20px;
+    }
+
+}
