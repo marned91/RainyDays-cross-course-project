@@ -1,4 +1,27 @@
+.contact-intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.contact_img {
+    width: 100%;
+    height: auto;
+}
+
+.contact-intro-text {
+    max-width: 40%;
+    line-height: 25px;
+}
+
+.contact-intro-text h1, .contact-intro-text p{
+    margin: 30px;
+}
+
+.contact-info-form {
+    background-color: #757579;
+    color: white;
+}
 
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px){
@@ -12,5 +35,5 @@
 
 /*laptop and desktop*/
 @media screen and (min-width: 901px) and (max-width: 20000px){
-    
+
 }

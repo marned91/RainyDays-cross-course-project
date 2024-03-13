@@ -149,6 +149,7 @@ footer a {
 .button {
     padding: 5px 60px;
     border-radius: 10px;
+    border: none;
     object-fit: cover;
     transition: transform 200ms ease-in;
 }

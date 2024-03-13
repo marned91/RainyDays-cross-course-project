@@ -12,7 +12,7 @@
 }
 
 .home-info p {
-    max-width: 80%;
+    max-width: 70%;
 }
 
 .fabric {
@@ -184,12 +184,13 @@
 
 /*laptop and desktop*/
 @media screen and (min-width: 901px) and (max-width: 20000px){
-    .home-info {
-        margin-left: 100px;
-    }
     .home-img {
         width: 110%;
         height: auto;
+    }
+
+    .home-info {
+        margin-left: 100px;
     }
 
     .fabric-icon-desktop {
