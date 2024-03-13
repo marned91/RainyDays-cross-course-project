@@ -60,6 +60,15 @@
     height: auto;
 }
 
+.fabric-icon-desktop {
+    object-fit: cover;
+    transition: transform 200ms ease-out;
+}
+
+.fabric-icon-desktop:hover {
+    transform: scale(1.15);
+}
+
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px){
     .home-img {
