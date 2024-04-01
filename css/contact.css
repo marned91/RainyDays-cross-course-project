@@ -1,4 +1,4 @@
-.contact-intro {
+.contact-intro, .contact-info {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,6 @@
 }
 
 .contact-intro-text {
-    max-width: 40%;
     line-height: 25px;
 }
 
@@ -21,19 +20,123 @@
 .contact-info-form {
     background-color: #757579;
     color: white;
+    display: block;
+    width: 100%;
+    margin-top: -4px;
+    padding: 100px 0px;
+}
+
+label {
+    display: block;
+}
+
+label, input, textarea, #form-button {
+    padding: 10px 0px;
+}
+
+input, textarea, #form-button{
+    border-radius: 10px;
+    border-style: none;
+    width: 100%;
+}
+
+#form-button {
+    margin-top: 20px;
+}
+
+.contactform, .contact-info-text {
+    margin: auto;
+}
+
+.contact-info-text p {
+    margin: 0px 30px;
+    line-height: 50px;
 }
 
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px){
+    .contact-intro {
+        flex-wrap: wrap-reverse;
+    }
+
+    .contact-info {
+        flex-wrap: wrap;
+    }
+
+    .contact-intro-text {
+        max-width: 100%;
+    }
+
+    .contact-intro-text h1, .contact-intro-text p, .contact-intro h1{
+        margin: 20px;
+    }
+
+    .contact-info-form {
+        padding: 40px 0px;
+    }
+
+    .contactform, .contact-info-text {
+        width: 90%;
+    }
+
+    .contact-info-text {
+        padding: 20px 0px;
+    }
+
+    .contact-info-text p {
+        margin: 0px 10px;
+    }
 
 }
 
 /*smaller and lagrer tablets*/
 @media screen and (min-width: 601px) and (max-width: 900px){
+    .contact-intro {
+        flex-wrap: wrap-reverse;
+    }
+
+    .contact-info{
+        flex-wrap: wrap;
+    }
+
+    .contact-intro-text {
+        max-width: 100%;
+        padding: 30px 0px;
+    }
+
+    .contact-intro-text h1, .contact-intro-text p, .contact-intro h1{
+        margin: 20px;
+    }
+
+    .contact-info-form {
+        padding: 40px 0px;
+    }
+
+    .contactform, .contact-info-text {
+        width: 90%;
+    }
+
+    .contact-info-text {
+        padding: 50px 0px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .contact-info-text p {
+        margin: 0px 20px;
+        width: 80%;
+    }
 
 }
 
 /*laptop and desktop*/
 @media screen and (min-width: 901px) and (max-width: 20000px){
+    .contact-intro-text {
+        max-width: 40%;
+    }
+
+    .contactform, .contact-info-text {
+        width: 50%;
+    }
 
 }

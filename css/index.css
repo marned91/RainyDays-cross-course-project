@@ -8,11 +8,17 @@
 }
 
 .home-info {
-    line-height: 35px;
+    max-width: 40%;
+    line-height: 25px;
 }
 
-.home-info p {
-    max-width: 70%;
+.home_img {
+    width: 100%;
+    height: auto;
+}
+
+.home-info p, .home-info h1, .home-info a {
+    margin: 30px;
 }
 
 .fabric {
@@ -60,24 +66,28 @@
     height: auto;
 }
 
-.fabric-icon-desktop {
+.popular-jacket-img {
     object-fit: cover;
     transition: transform 200ms ease-out;
 }
 
-.fabric-icon-desktop:hover {
-    transform: scale(1.15);
+.popular-jacket-img:hover {
+    transform: scale(1.05);
 }
 
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px){
-    .home-img {
-        width: 100%;
-        height: auto;
-    }
 
     .home-intro {
         gap: 10px;
+    }
+
+    .home-info {
+        max-width: 100%;
+    }
+
+    .home-info p, .home-info h1, .home-info a {
+        margin: 10px;
     }
 
     .fabric {
@@ -129,13 +139,16 @@
 
 /*smaller and lagrer tablets*/
 @media screen and (min-width: 601px) and (max-width: 900px) {
-    .home-img {
-        width: 100%;
-        height: auto;
-    }
-
     .home-intro {
         gap: 10px;
+    }
+
+    .home-info {
+        max-width: 100%;
+    }
+
+    .home-info p, .home-info h1, .home-info a {
+        margin: 10px;
     }
 
     .fabric {
@@ -153,7 +166,7 @@
         margin: 0px 20px;
     }
 
-    .home-info p, .fabric-info {
+    .fabric-info {
         max-width: 100%;
     }
 
@@ -184,14 +197,6 @@
 
 /*laptop and desktop*/
 @media screen and (min-width: 901px) and (max-width: 20000px){
-    .home-img {
-        width: 110%;
-        height: auto;
-    }
-
-    .home-info {
-        margin-left: 100px;
-    }
 
     .fabric-icon-desktop {
         width: 70px;

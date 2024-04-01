@@ -31,6 +31,19 @@ p, .terms-content li, .privacy-content li, footer a{
     font-size: 16px;
 }
 
+.nav-desktop a:hover {
+    text-decoration: underline;
+}
+
+#cart-icon{
+    object-fit: cover;
+    transition: transform 300ms ease-out;
+}
+
+#cart-icon:hover {
+    transform: scale(1.15);
+}
+
 h3, p, .button, .terms-content li, .privacy-content li {
     font-family: "public Sans";
 }
