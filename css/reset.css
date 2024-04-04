@@ -31,8 +31,9 @@ p, .terms-content li, .privacy-content li, footer a{
     font-size: 16px;
 }
 
-.nav-desktop a:hover {
+.nav-desktop a:hover, .active-page {
     text-decoration: underline;
+    text-decoration-thickness: 0.5px;
 }
 
 #cart-icon{
@@ -50,10 +51,6 @@ h3, p, .button, .terms-content li, .privacy-content li {
 
 nav a, footer, label, input {
     font-family: "cambay";
-}
-
-.nav-desktop a:active {
-    text-decoration: underline;
 }
 
 .logo {
