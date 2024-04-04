@@ -52,6 +52,10 @@ nav a, footer, label, input {
     font-family: "cambay";
 }
 
+.nav-desktop a:active {
+    text-decoration: underline;
+}
+
 .logo {
     align-self: center;
 }

@@ -98,7 +98,7 @@ input, textarea, #form-button{
     .contact-info{
         flex-wrap: wrap;
     }
-
+    
     .contact-intro-text {
         max-width: 100%;
         padding: 30px 0px;
