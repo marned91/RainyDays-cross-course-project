@@ -1,0 +1,39 @@
+.product-page-wrapper {
+    display: flex;
+}
+
+.adventure_parkas_main_img {
+    width: 50%;
+    height: auto;
+}
+
+.fabric-icon-small {
+    width: 5%;
+    height: auto;
+}
+
+#sizes {
+    width: 200px;
+    background-color: #757579;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+  }
+
+/*mobile and small tablets*/
+@media screen and (min-width: 300px) and (max-width: 600px){
+
+
+}
+
+/*smaller and lagrer tablets*/
+@media screen and (min-width: 601px) and (max-width: 900px) {
+
+
+}
+
+/*laptop and desktop*/
+@media screen and (min-width: 901px) and (max-width: 20000px){
+
+
+}
