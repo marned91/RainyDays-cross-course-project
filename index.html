@@ -26,8 +26,6 @@
                 <nav>
                   <ul>
                     <li><a href="index.html" class="active-page">HOME</a> </li>
-                    <li><a href="mens-jackets.html">MEN</a> </li>
-                    <li><a href="womens-jackets.html">WOMAN</a> </li>
                     <li><a href="about.html">ABOUT</a></li>
                     <li><a href="contact.html">CONTACT</a></li>
                   </ul>
@@ -37,8 +35,6 @@
                 <nav>
                     <ul>
                         <li><a href="index.html" class="active-page">HOME</a> </li>
-                        <li><a href="mens-jackets.html">MEN</a> </li>
-                        <li><a href="womens-jackets.html">WOMAN</a> </li>
                         <li><a href="about.html">ABOUT</a></li>
                         <li><a href="contact.html">CONTACT</a></li>
                       </ul>
@@ -52,6 +48,7 @@
             </div>
         </header>
         <main>
+            <div id="loading" class="spinning"></div>
             <section class="home-intro">
                 <h1 class="h1-mobile">PUSHING THE COMFORT ZONE</h1>
                 <div class="home-image">
@@ -84,35 +81,15 @@
                     <p>All our jackets have advanced windproof technology</p>
                 </div>
             </div>
-            <section class="popular-jackets">
-                <h2>POPULAR JACKETS</h2>
-                <div class="popular-jacket">
-                    <a href="adventure-parkas.html">
-                    <img src="css/Images/popular_jacket1.png" alt="Beautiful nature scenery in Ireland with a blond woman waring a yellow rain jacket" class="popular-jacket-img"></a>
-                    <div class="popular-jackets-text">
-                        <p>Stay cozy outdoors in Rainydays' Adventure Rain Jacket Mikado. Soft, insulated, perfection for any escapade.</p>
-                        <p class="price-bold">1050 NOK</p>
-                    </div>
-                </div>
-                <div class="popular-jacket">
-                    <a href="adventure-parkas.html">
-                    <img src="css/Images/popular_jacket2.png" alt="Man waring a black rain jacket with hood on a beach in Iceland" class="popular-jacket-img"></a>
-                    <div class="popular-jackets-text">
-                        <p>Embrace the elements in Rainydays' Padded Rain Parkas Coal. Crafted for rugged outdoor journeys.</p>
-                        <p class="price-bold">1249 NOK</p>
-                    </div>
-                </div>
-                <div class="popular-jacket">
-                    <a href="adventure-parkas.html">
-                    <img src="css/Images/popular_jacket3.png" alt="Beautiful nature scenery in a Norwegian valley and lake with a brunette woman waring a black rain jacket" class="popular-jacket-img"></a>
-                    <div class="popular-jackets-text">
-                        <p>Conquer the outdoors in Rainydays' Quilted Rain Parkas Charcoal. Built for robust adventures.</p>
-                        <p class="price-bold">499 NOK</p>
-                    </div>
-                </div>
-            </section>
             <section class="all-jackets">
-                <h2>ALL JACKETS</h2>
+                <h2>OUR JACKETS</h2>
+                <div class="gender-toggle">
+                <label for = "gender">Select category:</label>
+                <select name = "gender" id="gender">
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>   
+                </select>
+                </div>
                 <div class="item-list" id="display-container"></div>
             </section>
         </main>
@@ -121,8 +98,8 @@
                 <img src="css/Images/logo_white.png" alt="Rainydays-logo" class="logo-footer">
             </div>
             <div class="footer-links">
-                <a href="terms-conditions.html">TERMS & CONDITIONS </a>
-                <a href="privacy-policy.html">PRIVACY POLICY </a>
+                <a href="../privacy-terms/terms-conditions.html">TERMS & CONDITIONS </a>
+                <a href="../privacy-terms/privacy-policy.html">PRIVACY POLICY </a>
             </div>
         </footer>
       </body>

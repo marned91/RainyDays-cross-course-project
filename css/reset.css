@@ -86,6 +86,10 @@ nav a, footer, label, input {
     padding-inline: 20px;
 }
 
+.nav-desktop ul {
+    padding-inline-start: 0px;
+}
+
 .nav-desktop li, .button{
     display: inline-block;
 }
@@ -170,6 +174,34 @@ footer a {
 
 .button:hover {
     transform: scale(1.09);
+}
+
+#loading {
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid #757579;
+    border-top: 6px solid #FFFFFF;
+    border-radius: 100%;
+    margin: auto;
+    visibility: hidden;
+    animation: spin 1s infinite linear;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 50%;
+}
+
+#loading.display {
+    visibility: visible;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 

@@ -6,9 +6,7 @@ const myBasket = [];
 var myBasketSize = 0;
 
 const manDefiningTag = "mens";
-
-//Get a list of products
-//Display a list of products
+const womanDefiningTag = "womens";
 
 function generateRainydaysProductHtml (products){
     const containerDiv = document.createElement("div");
@@ -18,7 +16,7 @@ function generateRainydaysProductHtml (products){
     const productButton = document.createElement("button");
 
     productButton.data = products;
-    productButton.innerHTML = 'Legg til';
+    productButton.innerHTML = 'Add to cart';
     productButton.onclick = function()
 {
     myBasket.push(products);
@@ -30,7 +28,6 @@ function generateRainydaysProductHtml (products){
 
 containerDiv.append(productButton);
     return containerDiv;
-    //Generate HTML from the rainsydaysProducts object
 }
 
 async function displayRainydaysProducts(rainydaysProducts){
@@ -51,11 +48,8 @@ async function displayRainydaysProducts(rainydaysProducts){
     }
     const basketCounter = document.createElement("div");
     basketCounter.id = "basketCount";
-    basketCounter.textContent = "Varekurv inneholder: " + myBasketSize + " varer";
+    basketCounter.textContent = "Cart contains: " + myBasketSize + " jackets";
     displayContainer.appendChild(basketCounter);
-    //Get the products ✅
-    //Get the display container ✅
-    //For each of the products we generate HTML for that product❌
 };
 
 async function main (){
@@ -63,9 +57,9 @@ try {
     const rainydaysProducts =  await doFetch (API_RAINYDAYS_PRODUCTS);
     displayRainydaysProducts(rainydaysProducts);
 
-    //rainydaysProducts.forEach(it => console.log("Beskrivelse: " + it.description + " også navn da: " + it.title));
+    rainydaysProducts.forEach(it => console.log("Beskrivelse: " + it.description + " også navn da: " + it.title));
 
-    //console.log(JSON.stringify(rainydaysProducts));
+    console.log(JSON.stringify(rainydaysProducts));
 } catch (error) {
     console.log (error);
 }

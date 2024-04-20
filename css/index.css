@@ -1,6 +1,9 @@
 .home-intro, .fabric, .popular-jackets{
-    display: flex;
     justify-content: center;
+}
+
+.home-intro, .fabric, .popular-jackets, .gender-toggle {
+    display: flex;
 }
 
 .home-intro, .fabric, .popular-jackets, .popular-jacket {
@@ -48,7 +51,7 @@
     flex: 100%;
     color: white;
     background-color: black;
-    padding: 10px; 
+    padding: 30px; 
 }
 
 .popular-jacket {
@@ -78,6 +81,17 @@
 .item-list {
     color: red;
 }
+
+#gender {
+    width: 100px;
+    border-radius: 8px;
+}
+
+.gender-toggle {
+    gap: 10px;
+}
+
+
 
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px){
