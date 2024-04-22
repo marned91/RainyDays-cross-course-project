@@ -1,9 +1,9 @@
-import { doFetch } from "./script/utils/doFetch.mjs";
-import { API_RAINYDAYS_PRODUCTS } from "./script/common/constant.mjs";
+import { doFetch } from "./utils/doFetch.mjs";
+import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 
 console.log("Script loaded");
-const myBasket = [];
-var myBasketSize = 0;
+// const myBasket = [];
+// var myBasketSize = 0;
 
 const genderMen = "Male";
 const genderWomen = "Female";
@@ -11,14 +11,26 @@ const genderWomen = "Female";
 function generateRainydaysProductHtml(product) {
   const containerDiv = document.createElement("div");
   containerDiv.className = "product";
-  containerDiv.textContent = product.title;
-  containerDiv.textContent = product.description;
-  //Pris
+  const productLink = document.createElement ("a");
+  productLink.href = `./product/index.html?id=${product.id}`;
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
   img.className = "jacket_img";
-  containerDiv.appendChild(img);
+  productLink.appendChild(img);
+  containerDiv.appendChild(productLink);
+  const productTitle = document.createElement("p");
+  productTitle.textContent = product.title;
+  productTitle.className = "product-title";
+  const productDescription = document.createElement ("p");
+  productDescription.textContent = product.description;
+  productDescription.className = "product-description";
+  const productPrice = document.createElement("p");
+  productPrice.textContent = `NOK ${product.price}`;
+  productPrice.className = "product-price";
+  containerDiv.appendChild(productTitle);
+  containerDiv.appendChild(productDescription);
+  containerDiv.appendChild(productPrice);
 
 
 //   const productButton = document.createElement("button");
@@ -54,11 +66,13 @@ async function displayRainydaysProducts(products, genderSelection) {
     if (genderSelection === "Female" || genderSelection === "Male") {
         filteredProducts = products.filter(product => product.gender === genderSelection); 
     }
-    //Funksjon
+    //This is a function
     filteredProducts.forEach((product) => {
         const rainydaysHtml = generateRainydaysProductHtml(product);
         displayContainer.appendChild(rainydaysHtml);
     });
+  } else {
+    alert ("Sorry, something went wrong");
   }
   // const basketCounter = document.createElement("div");
   // basketCounter.id = "basketCount";

@@ -13,15 +13,19 @@ function hideLoading () {
 
 export async function doFetch (url){
     try {
+        console.log("Fetching from URL:", url);
         //Start loading spinner
         displayLoading();
         const response =  await fetch(url);
         if (!response.ok){
-            throw new Error ("Something went wrong");
+            console.log("Fetch failed:", response.statusText); 
+            throw new Error ("Oops, something went wrong");
         }
         const json =  await response.json();
+        console.log("Fetch successful:", json);
         return json;
     } catch (error){
+        console.log("Error during fetch:", error.message);
         alert(error.message);
         throw new Error(error);
     } finally {

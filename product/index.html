@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="../css/styles.css">
         <link rel="icon" type="image/favicon" href="css/Images/rainydays_favicon.png">
         <script src="https://kit.fontawesome.com/4abbc2116c.js" crossorigin="anonymous"></script>
+        <script type="module" src="../script/product.mjs" defer ></script>
       </head>
       <body>
         <header>
@@ -40,52 +41,26 @@
                   </nav>
               </div >
               <div class="cart">
-                <a href="shopping-cart.html" aria-label="Shopping Cart">
+                <a href="../checkout/index.html" aria-label="Shopping Cart">
                   <i class="fa-solid fa-cart-shopping" id="cart-icon"></i>
+                  <span id="cart-count" class="cart-count"></span>
                 </a>
               </div>
             </div>
         </header>
         <main>
-          <section class="product-page-wrapper">
-            <div class="product-page-images">
-              <img src="../css/Images/adventure_parkas_main_image.png" alt="The back of a woman in yellow rain parkas on top of a mountain in rainy weather" class="adventure_parkas_main_img">
-              <img src="../css/Images/adventure_parkas_small_image1.png" alt="Woman facing left waring a yellow rain parkas with hood on a volcanic beach" class="advendtures_parkas_small_img">
-              <img src="../css/Images/adventure_parkas_small_image2.png" alt="Woman facing right waring a yellow rain parkas with hood on an empty country road in the rain" class="advendtures_parkas_small_img">
-              <img src="../css/Images/adventure_parkas_small_image3.png" alt="Woman looking over her shoulder wearing a yellow rain parkas on top of a hill overlooking the ocean" class="advendtures_parkas_small_img">
+          <div id="loading" class="spinning"></div>
+          <div id="product-details"></div>
+          <div id="select-size">
+            <label for ="size">Select size:</label>
+            <select name = "sizes" id="sizes">
+                <option value="XS">XS</option>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>   
+            </select>
             </div>
-            <div class="product-page-info">
-              <div>
-                <h1>Adventure Parkas</h1>
-                <p class="p-bold">1050 NOK</p>
-              </div>
-              <div class="product-page-icons">
-                <div class="product-icons">
-                  <img src="../css/Images/windproof.png" alt="wind icon representing windprood farbic" class="fabric-icon-small">
-                  <p class="p-light">Windproof</p>
-                </div>
-                <div class="product-icons">
-                  <img src="../css/Images/waterproof.png" alt="water icon representing waterproof fabric" class="fabric-icon-small">
-                  <p class="p-light">Waterproof</p>
-                </div>
-                <div class="product-icons">
-                  <img src="../css/Images/breathable.png" alt="breathable icon representing breathable fabric" class="fabric-icon-small">
-                  <p class="p-light">Breathable</p>
-                </div>
-              </div>
-              <p>Conquer the outdoors with our Adventure Rain Parkas in Mikado yellow. Parkas has reinforced shoulder patches, and deep pockets keep your essentials within reach.</p>
-              <p>Ideal for hiking, camping, and tackling rugged weather.</p>
-              <select id="sizes">
-                <option value="" disabled selected">Select your size</option>
-                <option value="Extra Small">Extra Small</option>
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-                <option value="Extra Large">Extra Large</option>
-              </select>
-              <button type="button" class="button">ADD TO CART</button>
-            </div>
-          </section>
         </main>
         <footer>
             <div class="footer-logo">

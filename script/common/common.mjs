@@ -1,1 +1,0 @@
-//Script that is going to run on every single page

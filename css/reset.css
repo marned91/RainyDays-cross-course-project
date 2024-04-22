@@ -185,7 +185,7 @@ footer a {
     margin: auto;
     visibility: hidden;
     animation: spin 1s infinite linear;
-    position: absolute;
+    position: fixed;
     left: 50%;
     right: 50%;
     top: 50%;
