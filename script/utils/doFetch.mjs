@@ -16,10 +16,13 @@ export async function doFetch (url){
         //Start loading spinner
         displayLoading();
         const response =  await fetch(url);
+        if (!response.ok){
+            throw new Error ("Something went wrong");
+        }
         const json =  await response.json();
         return json;
     } catch (error){
-        console.log (error);
+        alert(error.message);
         throw new Error(error);
     } finally {
         console.log('API call is done');
