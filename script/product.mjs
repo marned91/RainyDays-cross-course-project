@@ -17,14 +17,14 @@ async function fetchProductDetails(productId) {
 
 async function renderProduct() {
   const product = await fetchProductDetails(productId);
-  if (!product){
+  if (!product) {
     alert("Sorry, product data is undefined");
     return;
-  };
+  }
 
   const productContainer = document.querySelector("#product-details");
 
-  productContainer.innerHTML= "";
+  productContainer.innerHTML = "";
 
   const img = document.createElement("img");
   img.src = product.image;
@@ -45,17 +45,17 @@ async function renderProduct() {
   productContainer.appendChild(price);
 
   const sizeSelect = document.querySelector("#sizes");
-  sizeSelect.innerHTML="";
+  sizeSelect.innerHTML = "";
 
-  if (product.sizes && product.sizes.length > 0){
-    product.sizes.forEach(size => {
-        const option = document.createElement ("option");
-        option.value = size;
-        option.textContent = size;
-        sizeSelect.appendChild(option);
+  if (product.sizes && product.sizes.length > 0) {
+    product.sizes.forEach((size) => {
+      const option = document.createElement("option");
+      option.value = size;
+      option.textContent = size;
+      sizeSelect.appendChild(option);
     });
   } else {
-    alert("Product sizes are not defined");
+    alert("Product sizes is not defined");
   }
 
   let selectedSize = sizeSelect.value;
@@ -79,42 +79,41 @@ async function renderProduct() {
 renderProduct();
 
 function updateCartIcon() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-    const cartCount = document.querySelector("#cart-count");
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartCount = document.querySelector("#cart-count");
 
-    if (totalItems > 0) {
-        cartCount.textContent = totalItems;
-        cartCount.style.display = "inline";
-    } else {
-        cartCount.style.display = "none";
-    }
+  if (totalItems > 0) {
+    cartCount.textContent = totalItems;
+    cartCount.style.display = "inline";
+  } else {
+    cartCount.style.display = "none";
+  }
 }
 
 document.addEventListener(DOMContentLoaded, () => {
-    updateCartIcon();
+  updateCartIcon();
 });
 
-function addToCart(product, size){
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const existingProduct = cart.find(
-        (item) => item.id === product.id && item.size === size
-    );
+function addToCart(product, size) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existingProduct = cart.find(
+    (item) => item.id === product.id && item.size === size
+  );
 
-    if (existingProduct){
-        existingProduct.quantity++;
-    } else {
-        cart.push ({
-            id: product.id,
-            title: product.title,
-            size: product.size,
-            price: product.price,
-            quantity: 1,
-        });
-    }
+  if (existingProduct) {
+    existingProduct.quantity++;
+  } else {
+    cart.push({
+      id: product.id,
+      title: product.title,
+      size: product.size,
+      price: product.price,
+      quantity: 1,
+    });
+  }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartIcon();
+  updateCartIcon();
 }
-
