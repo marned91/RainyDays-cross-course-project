@@ -5,6 +5,28 @@ console.log("Script loaded");
 // const myBasket = [];
 // var myBasketSize = 0;
 
+function scrollDownButton (){
+  const targetSection = document.querySelector(".all-jackets");
+  if(targetSection){
+    targetSection.scrollIntoView({behavior: "smooth"});
+  } else {
+    alert("Sorry, we could not find this page right now");
+  }
+}
+
+document.addEventListener ("DOMContentLoaded", () => {
+  const shopNowButton = document.querySelector("#shop-now");
+  if(shopNowButton){
+    shopNowButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      scrollDownButton();
+    });
+  } else {
+    alert("Sorry, something went wrong!");
+  }
+});
+
+
 const genderMen = "Male";
 const genderWomen = "Female";
 

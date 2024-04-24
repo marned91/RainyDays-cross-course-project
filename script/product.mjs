@@ -78,7 +78,7 @@ async function renderProduct() {
 
 renderProduct();
 
-function updateCartIcon() {
+export function updateCartIcon() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const cartCount = document.querySelector("#cart-count");
