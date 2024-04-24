@@ -2,8 +2,7 @@ import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 
 console.log("Script loaded");
-// const myBasket = [];
-// var myBasketSize = 0;
+
 
 function scrollDownButton (){
   const targetSection = document.querySelector(".all-jackets");
@@ -35,39 +34,30 @@ function generateRainydaysProductHtml(product) {
   containerDiv.className = "product";
   const productLink = document.createElement ("a");
   productLink.href = `./product/index.html?id=${product.id}`;
+
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
   img.className = "jacket_img";
   productLink.appendChild(img);
   containerDiv.appendChild(productLink);
+
   const productTitle = document.createElement("p");
   productTitle.textContent = product.title;
   productTitle.className = "product-title";
+
   const productDescription = document.createElement ("p");
   productDescription.textContent = product.description;
   productDescription.className = "product-description";
+
   const productPrice = document.createElement("p");
   productPrice.textContent = `NOK ${product.price}`;
   productPrice.className = "product-price";
+
   containerDiv.appendChild(productTitle);
   containerDiv.appendChild(productDescription);
   containerDiv.appendChild(productPrice);
 
-
-//   const productButton = document.createElement("button");
-//   productButton.data = products;
-//   productButton.innerHTML = "Add to cart";
-//   productButton.onclick = function () {
-//     myBasket.push(products);
-//     myBasketSize = myBasket.length;
-//     const basketCountContainer = document.querySelector("#basketCount");
-//     basketCountContainer.textContent =
-//       "Varekurv inneholder: " + myBasketSize + " varer";
-//     console.log(myBasket);
-//   };
-
-//   containerDiv.append(productButton);
   return containerDiv;
 }
 
@@ -76,12 +66,6 @@ async function displayRainydaysProducts(products, genderSelection) {
   displayContainer.innerHTML = "";
   let filteredProducts = products;
 
-
-  // console.log (displayContainer);
-  // rainydaysProducts.forEach(function (rainsydaysProduct){
-  //     const rainydaysHtml = generateRainydaysProductHtml(rainsydaysProduct);
-  //     displayContainer.appendChild(rainydaysHtml);
-  // });
 
     //Checking that products is not null to avoid null pointer expection 
   if (filteredProducts != undefined) {
@@ -96,10 +80,6 @@ async function displayRainydaysProducts(products, genderSelection) {
   } else {
     alert ("Sorry, something went wrong");
   }
-  // const basketCounter = document.createElement("div");
-  // basketCounter.id = "basketCount";
-  // basketCounter.textContent = "Cart contains: " + myBasketSize + " jackets";
-  // displayContainer.appendChild(basketCounter);
 }
 
 async function main() {

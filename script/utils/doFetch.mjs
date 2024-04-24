@@ -12,11 +12,12 @@ function hideLoading () {
 }
 
 export async function doFetch (url){
+    console.log("Attempting fetch from URL:", url);
     try {
-        console.log("Fetching from URL:", url);
         //Start loading spinner
-        displayLoading();
+        displayLoading(); 
         const response =  await fetch(url);
+        console.log("Response status:", response.status);
         if (!response.ok){
             console.log("Fetch failed:", response.statusText); 
             throw new Error ("Oops, something went wrong");

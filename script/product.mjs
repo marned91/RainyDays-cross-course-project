@@ -83,17 +83,18 @@ export function updateCartIcon() {
   const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
   const cartCount = document.querySelector("#cart-count");
 
-  if (totalItems > 0) {
-    cartCount.textContent = totalItems;
-    cartCount.style.display = "inline";
-  } else {
-    cartCount.style.display = "none";
+  if (cartCount) {
+    if (totalItems > 0) {
+        cartCount.textContent = totalItems;
+        cartCount.style.display = "inline";
+    } else {
+        cartCount.style.display = "none";
+    }
   }
 }
 
-document.addEventListener(DOMContentLoaded, () => {
-  updateCartIcon();
-});
+document.addEventListener(DOMContentLoaded, updateCartIcon);
+
 
 function addToCart(product, size) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -101,16 +102,19 @@ function addToCart(product, size) {
     (item) => item.id === product.id && item.size === size
   );
 
+  const cartItem = {
+    id: product.id,
+    title: product.title,
+    image: product.image,
+    size:  size,
+    price: product.price,
+    quantity: 1,
+  };
+
   if (existingProduct) {
     existingProduct.quantity++;
   } else {
-    cart.push({
-      id: product.id,
-      title: product.title,
-      size: product.size,
-      price: product.price,
-      quantity: 1,
-    });
+    cart.push(cartItem);
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
