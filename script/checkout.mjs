@@ -1,6 +1,5 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
-import { updateCartIcon } from "./product.mjs";
 
 function createCartItemElement(item){
     const cartItemDiv = document.createElement("div");
@@ -18,21 +17,28 @@ function createCartItemElement(item){
     const productSize = document.createElement ("p");
     productSize.textContent = `Size: ${item.size}`;
 
+    const productColor = document.createElement ("p");
+    productColor.textContent =`Color: ${item.color}`;
+
     const productQuantity = document.createElement ("p");
     productQuantity.textContent = `Quantity: ${item.quantity}`;
 
     const productTotalPrice = item.quantity * item.price;
     const productPrice = document.createElement ("p");
-    productPrice.textContent = `Total price: NOK ${productTotalPrice.toFixed(2)}`;
+    productPrice.textContent = `Price: NOK ${productTotalPrice.toFixed(2)}`;
 
     const removeItemButton = document.createElement("button");
     removeItemButton.textContent = "Remove";
     removeItemButton.className = "remove-button";
-    removeItemButton.addEventListener("click", () => removeCallback (item));
+    removeItemButton.addEventListener("click", () => {
+        console.log("Remove button clicked for item:", item);
+        removeFromCart(item);
+    });
 
     cartItemDiv.append(productTitle);
     cartItemDiv.append(img);
     cartItemDiv.append(productSize);
+    cartItemDiv.append(productColor);
     cartItemDiv.append(productQuantity);
     cartItemDiv.append(productPrice);
     cartItemDiv.append(removeItemButton);
@@ -66,10 +72,9 @@ document.addEventListener("DOMContentLoaded", displayCart);
 function removeFromCart(itemsToRemove) {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const updatedCart = cart.filter(
-        (item) => item.id !== itemsToRemove.id && item.size !== itemsToRemove.size
+        (item) => item.id !== itemsToRemove.id || item.size !== itemsToRemove.size
     );
 
     localStorage.setItem("cart" ,JSON.stringify(updatedCart));
-    updateCartIcon();
     displayCart();
 }

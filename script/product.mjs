@@ -36,12 +36,16 @@ async function renderProduct() {
   const description = document.createElement("p");
   description.textContent = product.description;
 
+  const color = document.createElement ("p");
+  color.textContent = `Color: ${product.baseColor}`;
+
   const price = document.createElement("p");
   price.textContent = `NOK ${product.price}`;
 
   productContainer.appendChild(img);
   productContainer.appendChild(title);
   productContainer.appendChild(description);
+  productContainer.appendChild(color);
   productContainer.appendChild(price);
 
   const sizeSelect = document.querySelector("#sizes");
@@ -80,16 +84,18 @@ renderProduct();
 
 export function updateCartIcon() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-  const cartCount = document.querySelector("#cart-count");
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartCountElement = document.querySelector("#cart-count");
 
-  if (cartCount) {
+  if (cartCountElement) {
     if (totalItems > 0) {
-        cartCount.textContent = totalItems;
-        cartCount.style.display = "inline";
+        cartCountElement.textContent = totalItems;
+        cartCountElement.style.display = "inline";
     } else {
-        cartCount.style.display = "none";
+        cartCountElement.style.display = "none";
     }
+  } else {
+    console.warn("Cart count element not found.");
   }
 }
 
@@ -107,6 +113,7 @@ function addToCart(product, size) {
     title: product.title,
     image: product.image,
     size:  size,
+    color: product.baseColor,
     price: product.price,
     quantity: 1,
   };
