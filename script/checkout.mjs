@@ -1,107 +1,149 @@
+import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon } from "./utils/updateCartIcon.mjs";
-import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
+  try {
     updateCartIcon();
+    cartContent();
+  } catch (error) {
+    alert(
+      "Oops, something went wrong while loading the checkout page. Please try refreshing the page.");
+  }
+});
+
+function createCartItemElement(item) {
+  const cartItemDiv = document.createElement("div");
+  cartItemDiv.className = "cart-item";
+
+  const productTitle = document.createElement("h3");
+  productTitle.textContent = `Jacket: ${item.title}`;
+
+  const img = document.createElement("img");
+  img.src = item.image;
+  img.alt = item.title;
+  img.className = "item_img";
+  console.log("Image URL:", item.image);
+
+  const productSize = document.createElement("p");
+  productSize.textContent = `Size: ${item.size}`;
+
+  const productColor = document.createElement("p");
+  productColor.textContent = `Color: ${item.color}`;
+
+  const productQuantity = document.createElement("p");
+  productQuantity.textContent = `Quantity: ${item.quantity}`;
+
+  const productTotalPrice = item.quantity * item.price;
+  const productPrice = document.createElement("p");
+  productPrice.textContent = `Price: NOK ${productTotalPrice.toFixed(2)}`;
+
+  const removeItemButton = document.createElement("button");
+  removeItemButton.textContent = "Remove";
+  removeItemButton.className = "remove-button";
+  removeItemButton.addEventListener("click", () => {
+    console.log("Remove button clicked for item:", item);
+    removeFromCart(item);
   });
 
-function createCartItemElement(item){
-    const cartItemDiv = document.createElement("div");
-    cartItemDiv.className = "cart-item";
+  cartItemDiv.append(
+    productTitle, 
+    img,
+    productSize, 
+    productColor, 
+    productQuantity, 
+    productPrice,
+    removeItemButton
+  );
 
-    const productTitle = document.createElement ("h3");
-    productTitle.textContent = `Jacket: ${item.title}`;
-
-    const img = document.createElement("img");
-    img.src = item.image;
-    img.alt = item.title;
-    img.className = "item_img";
-    console.log("Image URL:", item.image);
-
-    const productSize = document.createElement ("p");
-    productSize.textContent = `Size: ${item.size}`;
-
-    const productColor = document.createElement ("p");
-    productColor.textContent =`Color: ${item.color}`;
-
-    const productQuantity = document.createElement ("p");
-    productQuantity.textContent = `Quantity: ${item.quantity}`;
-
-    const productTotalPrice = item.quantity * item.price;
-    const productPrice = document.createElement ("p");
-    productPrice.textContent = `Price: NOK ${productTotalPrice.toFixed(2)}`;
-
-    const removeItemButton = document.createElement("button");
-    removeItemButton.textContent = "Remove";
-    removeItemButton.className = "remove-button";
-    removeItemButton.addEventListener("click", () => {
-        console.log("Remove button clicked for item:", item);
-        removeFromCart(item);
-    });
-
-    cartItemDiv.append(productTitle);
-    cartItemDiv.append(img);
-    cartItemDiv.append(productSize);
-    cartItemDiv.append(productColor);
-    cartItemDiv.append(productQuantity);
-    cartItemDiv.append(productPrice);
-    cartItemDiv.append(removeItemButton);
-
-    return cartItemDiv;
+  return cartItemDiv;
 }
 
 function cartTotalPrice() {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let totalPrice = 0;
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let totalPrice = 0;
 
-    console.log("Cart data in calculatedTotalPrice", cart);
+  cart.forEach((item) => {
+    totalPrice += item.price * item.quantity;
+  });
 
-    cart.forEach((item) => {
-        totalPrice += item.price * item.quantity;
-        console.log(`Item: ${item.title}, Quantity: ${item.quantity}, Total for item: ${item.price * item.quantity}`);
-    });
-    console.log("Calculated total price:", totalPrice);
-    return totalPrice;
+  return totalPrice;
 }
 
 function cartContent() {
+  try {
     const cartData = localStorage.getItem("cart");
-    console.log("Cart data from localStorage:", cartData);
-
     const cart = JSON.parse(cartData) || [];
     const cartProductsDiv = document.querySelector("#cart-products");
+    const checkoutContainer = document.querySelector("#checkout-button");
+
+    if (!cartProductsDiv || !checkoutContainer) {
+      throw new Error("Cart products could not be found");
+    }
 
     cartProductsDiv.innerHTML = "";
 
-    if(cart.length === 0){
-        const emptyCartMessage = document.createElement("p");
-        emptyCartMessage.textContent = "Your cart is currently empty";
-        cartProductsDiv.appendChild(emptyCartMessage);
+    if (cart.length === 0) {
+      const emptyCartMessage = document.createElement("p");
+      emptyCartMessage.textContent = "Your cart is currently empty";
+      cartProductsDiv.appendChild(emptyCartMessage);
+
+      checkoutContainer.innerHTML = "";
     } else {
-        cart.forEach((item) => {
-            const cartItemElement = createCartItemElement(item, removeFromCart);
-            cartProductsDiv.appendChild(cartItemElement);
+      cart.forEach((item) => {
+        const cartItemElement = createCartItemElement(item);
+        cartProductsDiv.appendChild(cartItemElement);
+      });
+
+      if(!checkoutContainer.innerHTML) {
+        const checkoutButton = document.createElement("button");
+        checkoutButton.textContent ="Buy Now";
+
+        checkoutContainer.innerHTML= "";
+        checkoutContainer.appendChild(checkoutButton);
+
+        checkoutButton.addEventListener("click", () => {
+            window.location.href = "./confirmation/index.html";
         });
+      }
 
-        const totalPrice = cartTotalPrice();
-        const totalPriceElement = document.createElement("p");
-        totalPriceElement.textContent = `Total Price: NOK ${totalPrice.toFixed(2)}`;
-        totalPriceElement.className = "total-price";
+      const totalPrice = cartTotalPrice();
+      const totalPriceElement = document.createElement("p");
+      totalPriceElement.textContent = `Total Price: NOK ${totalPrice.toFixed(
+        2
+      )}`;
+      totalPriceElement.className = "total-price";
 
-        cartProductsDiv.appendChild(totalPriceElement);     
+      cartProductsDiv.appendChild(totalPriceElement);
     }
+  } catch (error) {
+    console.log("Error loading cart content:", error);
+    alert(
+      "Sorry, we're having trouble loading your cart. Please try to refresh the page"
+    );
+  }
 }
 
 document.addEventListener("DOMContentLoaded", cartContent);
 
 function removeFromCart(itemsToRemove) {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const updatedCart = cart.filter(
+  try {
+    const cartData = localStorage.getItem("cart");
+    const cart = JSON.parse(cartData) || [];
+
+    const updatedCart = cart.filter (
         (item) => item.id !== itemsToRemove.id || item.size !== itemsToRemove.size
     );
 
-    localStorage.setItem("cart" ,JSON.stringify(updatedCart));
-    cartContent();
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    if(cart.length !== updatedCart.length) {
+        cartContent();
+    }
+
+  } catch (error) {
+    console.error("Error removing item from cart:", error);
+    alert("Something went wrong while removing items from your cart. Please try to reload the page");
+  }
 }
