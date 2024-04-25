@@ -96,36 +96,30 @@ function cartContent() {
         cartProductsDiv.appendChild(cartItemElement);
       });
 
-      if(!checkoutContainer.innerHTML) {
-        const checkoutButton = document.createElement("button");
-        checkoutButton.textContent ="Buy Now";
-
-        checkoutContainer.innerHTML= "";
-        checkoutContainer.appendChild(checkoutButton);
-
-        checkoutButton.addEventListener("click", () => {
-            window.location.href = "./confirmation/index.html";
-        });
-      }
-
       const totalPrice = cartTotalPrice();
       const totalPriceElement = document.createElement("p");
-      totalPriceElement.textContent = `Total Price: NOK ${totalPrice.toFixed(
-        2
-      )}`;
+      totalPriceElement.textContent = `Total Price: NOK ${totalPrice.toFixed(2)}`;
       totalPriceElement.className = "total-price";
 
       cartProductsDiv.appendChild(totalPriceElement);
+
+      if(!checkoutContainer.innerHTML) {
+        const checkoutButton = document.createElement("button");
+        checkoutButton.textContent ="Buy Now";
+        checkoutButton.addEventListener("click", () => {
+            window.location.href = "./confirmation/index.html";
+        });
+
+        checkoutContainer.innerHTML= "";
+        checkoutContainer.appendChild(checkoutButton);
+      }
     }
   } catch (error) {
     console.log("Error loading cart content:", error);
     alert(
-      "Sorry, we're having trouble loading your cart. Please try to refresh the page"
-    );
+      "Sorry, we're having trouble loading your cart. Please try to refresh the page");
   }
 }
-
-document.addEventListener("DOMContentLoaded", cartContent);
 
 function removeFromCart(itemsToRemove) {
   try {

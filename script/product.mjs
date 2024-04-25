@@ -3,34 +3,42 @@ import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon } from "./utils/updateCartIcon.mjs";
 import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateCartIcon();
-});
-
-console.log("Script loaded");
+document.addEventListener("DOMContentLoaded", updateCartIcon);
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
 
-console.log("Product ID from URL:", productId);
 
 async function fetchProductDetails(productId) {
-  const productUrl = `${API_RAINYDAYS_PRODUCTS}/${productId}`;
-  console.log("Product URL:", productUrl);
-  const product = await doFetch(productUrl);
-  return product;
+  try {
+    const productUrl = `${API_RAINYDAYS_PRODUCTS}/${productId}`;
+    const product = await doFetch(productUrl);
+
+    if(!product) {
+      throw new Error("Product information is not defined");
+    }
+    return product;
+  } catch (error) {
+    alert("Ooops, failed to fetch product details.");
+  }
 }
 
 async function renderProduct() {
-  const product = await fetchProductDetails(productId);
-  if (!product) {
-    alert("Sorry, product data is undefined");
+  const productContainer = document.querySelector("#product-details");
+  const sizeSelect = document.querySelector("#sizes");
+
+  if (!productContainer || !sizeSelect) {
+    alert("Page structure is incomplete. Please reload.");
     return;
   }
 
-  const productContainer = document.querySelector("#product-details");
+  productContainer.innerHTML= "";
 
-  productContainer.innerHTML = "";
+  const product = await fetchProductDetails(productId);
+
+  if(!product) {
+    return;
+  }
 
   const img = document.createElement("img");
   img.src = product.image;
@@ -54,9 +62,6 @@ async function renderProduct() {
   productContainer.appendChild(color);
   productContainer.appendChild(price);
 
-  const sizeSelect = document.querySelector("#sizes");
-  sizeSelect.innerHTML = "";
-
   if (product.sizes && product.sizes.length > 0) {
     product.sizes.forEach((size) => {
       const option = document.createElement("option");
@@ -72,7 +77,6 @@ async function renderProduct() {
 
   sizeSelect.addEventListener("change", (e) => {
     selectedSize = e.target.value;
-    console.log("New selected size:", selectedSize);
   });
 
   const addToCartButton = document.createElement("button");
@@ -85,10 +89,6 @@ async function renderProduct() {
 
   productContainer.appendChild(addToCartButton);
 }
-
-renderProduct();
-
-document.addEventListener(DOMContentLoaded, updateCartIcon);
 
 
 function addToCart(product, size) {
@@ -117,3 +117,5 @@ function addToCart(product, size) {
 
   updateCartIcon();
 }
+
+renderProduct();
