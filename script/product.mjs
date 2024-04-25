@@ -1,5 +1,11 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
+import { updateCartIcon } from "./utils/updateCartIcon.mjs";
+import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartIcon();
+});
 
 console.log("Script loaded");
 
@@ -81,23 +87,6 @@ async function renderProduct() {
 }
 
 renderProduct();
-
-export function updateCartIcon() {
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const cartCountElement = document.querySelector("#cart-count");
-
-  if (cartCountElement) {
-    if (totalItems > 0) {
-        cartCountElement.textContent = totalItems;
-        cartCountElement.style.display = "inline";
-    } else {
-        cartCountElement.style.display = "none";
-    }
-  } else {
-    console.warn("Cart count element not found.");
-  }
-}
 
 document.addEventListener(DOMContentLoaded, updateCartIcon);
 

@@ -1,5 +1,11 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
+import { updateCartIcon } from "./utils/updateCartIcon.mjs";
+import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateCartIcon();
+  });
 
 function createCartItemElement(item){
     const cartItemDiv = document.createElement("div");
@@ -46,7 +52,21 @@ function createCartItemElement(item){
     return cartItemDiv;
 }
 
-function displayCart() {
+function cartTotalPrice() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalPrice = 0;
+
+    console.log("Cart data in calculatedTotalPrice", cart);
+
+    cart.forEach((item) => {
+        totalPrice += item.price * item.quantity;
+        console.log(`Item: ${item.title}, Quantity: ${item.quantity}, Total for item: ${item.price * item.quantity}`);
+    });
+    console.log("Calculated total price:", totalPrice);
+    return totalPrice;
+}
+
+function cartContent() {
     const cartData = localStorage.getItem("cart");
     console.log("Cart data from localStorage:", cartData);
 
@@ -64,10 +84,17 @@ function displayCart() {
             const cartItemElement = createCartItemElement(item, removeFromCart);
             cartProductsDiv.appendChild(cartItemElement);
         });
+
+        const totalPrice = cartTotalPrice();
+        const totalPriceElement = document.createElement("p");
+        totalPriceElement.textContent = `Total Price: NOK ${totalPrice.toFixed(2)}`;
+        totalPriceElement.className = "total-price";
+
+        cartProductsDiv.appendChild(totalPriceElement);     
     }
 }
 
-document.addEventListener("DOMContentLoaded", displayCart);
+document.addEventListener("DOMContentLoaded", cartContent);
 
 function removeFromCart(itemsToRemove) {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -76,5 +103,5 @@ function removeFromCart(itemsToRemove) {
     );
 
     localStorage.setItem("cart" ,JSON.stringify(updatedCart));
-    displayCart();
+    cartContent();
 }

@@ -1,15 +1,4 @@
-const loader = document.querySelector ("#loading");
-
-function displayLoading (){
-    loader.classList.add ("display");
-    setTimeout (() => {
-        loader.classList.remove("display");
-    }, 5000);
-}
-
-function hideLoading () {
-    loader.classList.remove("display");
-}
+import { displayLoading, hideLoading} from "./loadingSpinner.mjs";
 
 export async function doFetch (url){
     console.log("Attempting fetch from URL:", url);

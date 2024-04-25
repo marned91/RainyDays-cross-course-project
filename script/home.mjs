@@ -1,7 +1,12 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
+import { updateCartIcon} from "./utils/updateCartIcon.mjs";
 
 console.log("Script loaded");
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartIcon();
+});
 
 
 function scrollDownButton (){
