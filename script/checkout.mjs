@@ -121,14 +121,14 @@ function cartContent() {
 
       cartProductsDiv.appendChild(totalPriceElement);
 
-      if(!checkoutContainer.innerHTML) {
+      if(checkoutContainer.innerHTML === "") {
         const checkoutButton = document.createElement("button");
         checkoutButton.textContent ="Buy Now";
         checkoutButton.addEventListener("click", () => {
-            window.location.href = "./confirmation/index.html";
+          clearCart();
+          window.location.href = "./confirmation/index.html";
         });
 
-        checkoutContainer.innerHTML= "";
         checkoutContainer.appendChild(checkoutButton);
       }
     }
@@ -156,4 +156,10 @@ function removeFromCart(itemsToRemove) {
   } catch (error) {;
     alert("Something went wrong while removing items from your cart. Please try to reload the page");
   }
+}
+
+function clearCart() {
+  localStorage.removeItem("cart");
+
+  updateCartIcon();
 }
