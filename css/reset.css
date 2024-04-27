@@ -186,13 +186,13 @@ footer a {
     border: 5px solid #757579;
     border-top: 6px solid #FFFFFF;
     border-radius: 100%;
-    margin: auto;
-    visibility: hidden;
     animation: spin 1s infinite linear;
     position: fixed;
-    left: 50%;
-    right: 50%;
     top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    z-index: 999;
 }
 
 #loading.display {

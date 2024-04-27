@@ -1,7 +1,6 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon } from "./utils/updateCartIcon.mjs";
-import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
 
 document.addEventListener("DOMContentLoaded", updateCartIcon);
 
@@ -37,15 +36,18 @@ async function renderProduct() {
   const product = await fetchProductDetails(productId);
 
   if(!product) {
+    alert("The product data was unavailable, please try to relead the page");
     return;
   }
+
+  sizeSelect.innerHTML = "";
+
+  const title = document.createElement("h2");
+  title.textContent = product.title;
 
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
-
-  const title = document.createElement("h2");
-  title.textContent = product.title;
 
   const description = document.createElement("p");
   description.textContent = product.description;
@@ -56,8 +58,8 @@ async function renderProduct() {
   const price = document.createElement("p");
   price.textContent = `NOK ${product.price}`;
 
-  productContainer.appendChild(img);
   productContainer.appendChild(title);
+  productContainer.appendChild(img);
   productContainer.appendChild(description);
   productContainer.appendChild(color);
   productContainer.appendChild(price);

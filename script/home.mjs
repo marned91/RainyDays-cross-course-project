@@ -1,7 +1,6 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon} from "./utils/updateCartIcon.mjs";
-import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
 
 console.log("Script loaded");
 

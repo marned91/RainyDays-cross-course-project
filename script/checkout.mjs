@@ -1,17 +1,35 @@
-import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
-import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon } from "./utils/updateCartIcon.mjs";
+import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   try {
     updateCartIcon();
+    addCartHeader();
     cartContent();
+    handleLoading();
   } catch (error) {
     alert(
-      "Oops, something went wrong while loading the checkout page. Please try refreshing the page.");
-  }
+      "Sorry, something went wrong while loading the checkout page. Please try refreshing the page.");
+  } 
 });
+
+async function handleLoading() {
+  try {
+    displayLoading();
+    await new Promise((resolve) => setTimeout(resolve,1000));
+  } catch (error){
+    //Avoidng error message as it just includes loading spinner. If it's not displaying, it's not worth an alert for the user
+  } finally {
+    hideLoading();
+  }
+}
+
+function addCartHeader () {
+  const checkoutHeader = document.querySelector("#cart-header");
+  checkoutHeader.textContent = "YOUR SHOPPING CART";
+}
 
 function createCartItemElement(item) {
   const cartItemDiv = document.createElement("div");
@@ -86,7 +104,7 @@ function cartContent() {
 
     if (cart.length === 0) {
       const emptyCartMessage = document.createElement("p");
-      emptyCartMessage.textContent = "Your cart is currently empty";
+      emptyCartMessage.textContent = "Looks like you have not added anything to your cart yet!";
       cartProductsDiv.appendChild(emptyCartMessage);
 
       checkoutContainer.innerHTML = "";
@@ -132,12 +150,10 @@ function removeFromCart(itemsToRemove) {
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
-    if(cart.length !== updatedCart.length) {
-        cartContent();
-    }
+    updateCartIcon();
+    cartContent();
 
-  } catch (error) {
-    console.error("Error removing item from cart:", error);
+  } catch (error) {;
     alert("Something went wrong while removing items from your cart. Please try to reload the page");
   }
 }
