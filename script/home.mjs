@@ -2,8 +2,6 @@ import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon} from "./utils/updateCartIcon.mjs";
 
-console.log("Script loaded");
-
 document.addEventListener("DOMContentLoaded", () => {
   updateCartIcon();
 });
@@ -37,6 +35,7 @@ const genderWomen = "Female";
 function generateRainydaysProductHtml(product) {
   const containerDiv = document.createElement("div");
   containerDiv.className = "product";
+
   const productLink = document.createElement ("a");
   productLink.href = `./product/index.html?id=${product.id}`;
 
@@ -45,7 +44,6 @@ function generateRainydaysProductHtml(product) {
   img.alt = product.title;
   img.className = "jacket_img";
   productLink.appendChild(img);
-  containerDiv.appendChild(productLink);
 
   const productTitle = document.createElement("p");
   productTitle.textContent = product.title;
@@ -59,6 +57,7 @@ function generateRainydaysProductHtml(product) {
   productPrice.textContent = `NOK ${product.price}`;
   productPrice.className = "product-price";
 
+  containerDiv.appendChild(productLink);
   containerDiv.appendChild(productTitle);
   containerDiv.appendChild(productDescription);
   containerDiv.appendChild(productPrice);

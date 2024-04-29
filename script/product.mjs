@@ -83,6 +83,7 @@ async function renderProduct() {
 
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
+  addToCartButton.className = "button";
 
   addToCartButton.addEventListener("click", () => {
     addToCart(product, selectedSize);

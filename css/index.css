@@ -1,16 +1,21 @@
-.home-intro, .fabric, .popular-jackets{
+.home-intro, .fabric, #gender-toggle, .item-list{
     justify-content: center;
 }
 
-.home-intro, .fabric, .popular-jackets, .gender-toggle {
+.home-intro, .fabric, #gender-toggle {
     display: flex;
 }
 
-.home-intro, .fabric, .popular-jackets, .popular-jacket {
+.home-intro, .fabric, #gender-toggle, .item-list{
     align-items: center;
 }
 
-.home-info {
+#gender-toggle {
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.home-info, .product-description {
     max-width: 40%;
     line-height: 25px;
 }
@@ -33,58 +38,22 @@
     max-width: 50%;
 }
 
-.fabric-info, .popular-jacket{
+.fabric-info {
     flex: 1; 
 }
 
-.fabric-info, .popular-jackets h2, .all-jackets h2 {
+.fabric-info, .all-jackets h2 {
     text-align: center;
 }
 
-.popular-jackets {
-    flex-wrap: wrap;
-    padding-bottom: 100px;
-    gap: 10px;
-}
-
-.popular-jackets h2, .all-jackets h2 {
-    flex: 100%;
+.all-jackets h2 {
     color: white;
     background-color: black;
-    padding: 30px; 
+    padding: 20px; 
 }
 
-.popular-jacket {
-    margin: 0px 10px;
-}
-
-.popular-jackets-text {
-    max-width: 95%;
-    height: 60px;
-    line-height: 25px;
-}
-
-.popular-jacket-img {
-    width: 100%;
-    height: auto;
-}
-
-.popular-jacket-img {
-    object-fit: cover;
-    transition: transform 200ms ease-out;
-}
-
-.popular-jacket-img:hover {
+.jacket_img:hover {
     transform: scale(1.05);
-}
-
-.item-list {
-    color: red;
-}
-
-#gender {
-    width: 100px;
-    border-radius: 8px;
 }
 
 .gender-toggle {
@@ -92,8 +61,29 @@
 }
 
 .jacket_img {
-    width: 50%;
-    height: auto;
+    width: auto;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 200ms ease-out;
+}
+
+.item-list {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    padding: 40px 20px 100px 50px;
+    gap: 20px 10px;
+}
+
+.product-title {
+    padding-top: 20px;
+}
+
+.product-description {
+    max-width: 80%;
+}
+
+.product-description, .product-title, .product-price, .item-list  {
+    margin: 10px;
 }
 
 
@@ -140,7 +130,7 @@
         display: none;
     }
 
-    .fabric-info, .popular-jacket{
+    .fabric-info{
         flex: 100%;
     }
 
@@ -148,14 +138,24 @@
         text-align: left;
     }
 
-    .popular-jacket {
-        margin: 0px;
+    .item-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 10px;
     }
 
-    .popular-jackets-text {
+    .jacket_img {
+        width: 100%;
         height: auto;
-        line-height: 20px;
-        margin: 0px 20px;
+    }
+
+    .product-title {
+        padding-top: 0px;
+    }
+    
+    .product-description {
+        max-width: 100%;
     }
 
 }
@@ -206,14 +206,25 @@
         text-align: left;
     }
 
-    .popular-jacket {
-        margin: 0px;
+    .item-list {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        margin: 20px;
+        padding: 10px;
+        gap: 10px;
     }
 
-    .popular-jackets-text {
-        height: 100px;
-        line-height: 20px;
-        margin: 0px 20px;
+    .jacket_img {
+        width: 90%;
+        height: auto;
+    }
+
+    .product-title {
+        padding-top: 0px;
+    }
+    
+    .product-description {
+        max-width: 100%;
     }
 
 }

@@ -74,6 +74,7 @@ nav a, footer, label, input {
     align-items: center;
 }
 
+
 .logo, .header {
     justify-content: center;
 }
@@ -164,7 +165,7 @@ footer a {
     display: block;
 }
 
-.p-bold, .price-bold {
+.p-bold, .price-bold, .product-title {
     font-weight: bold;
 }
 
@@ -192,7 +193,6 @@ footer a {
     left: 50%;
     transform: translate(-50%, -50%);
     visibility: hidden;
-    z-index: 999;
 }
 
 #loading.display {
@@ -211,6 +211,15 @@ footer a {
 .cart-count {
     color: white;
 }
+
+#sizes, #gender{
+    width: 150px;
+    background-color: #757579;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 10px;
+    height: 30px;
+  }
 
 
 /*mobile and small tablets*/
