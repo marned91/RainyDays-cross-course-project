@@ -1,6 +1,6 @@
-import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon } from "./utils/updateCartIcon.mjs";
 import { displayLoading, hideLoading } from "./utils/loadingSpinner.mjs";
+import { alertUser } from "./utils/errorHandler.mjs";
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -10,17 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
     cartContent();
     handleLoading();
   } catch (error) {
-    alert(
-      "Sorry, something went wrong while loading the checkout page. Please try refreshing the page.");
+      alertUser(error.message);
   } 
 });
 
 async function handleLoading() {
   try {
     displayLoading();
-    await new Promise((resolve) => setTimeout(resolve,1000));
   } catch (error){
-    //Avoidng error message as it just includes loading spinner. If it's not displaying, it's not worth an alert for the user
+    //Avoidng error message as it just includes loading spinner. If it's not displaying, it's not worth an alert for the user?
   } finally {
     hideLoading();
   }
@@ -35,6 +33,9 @@ function createCartItemElement(item) {
   const cartItemDiv = document.createElement("div");
   cartItemDiv.className = "cart-item";
 
+  const cartDetailsWrapper = document.createElement("div");
+  cartDetailsWrapper.className = "cart-details-wrapper";
+
   const productTitle = document.createElement("h3");
   productTitle.textContent = `Jacket: ${item.title}`;
 
@@ -42,7 +43,6 @@ function createCartItemElement(item) {
   img.src = item.image;
   img.alt = item.title;
   img.className = "item_img";
-  console.log("Image URL:", item.image);
 
   const productSize = document.createElement("p");
   productSize.textContent = `Size: ${item.size}`;
@@ -60,20 +60,20 @@ function createCartItemElement(item) {
   const removeItemButton = document.createElement("button");
   removeItemButton.textContent = "Remove";
   removeItemButton.className = "remove-button";
+  removeItemButton.className = "second-button";
   removeItemButton.addEventListener("click", () => {
-    console.log("Remove button clicked for item:", item);
     removeFromCart(item);
   });
 
-  cartItemDiv.append(
-    productTitle, 
-    img,
-    productSize, 
-    productColor, 
-    productQuantity, 
-    productPrice,
-    removeItemButton
-  );
+  cartDetailsWrapper.appendChild(productTitle);
+  cartDetailsWrapper.appendChild(productSize);
+  cartDetailsWrapper.appendChild(productColor);
+  cartDetailsWrapper.appendChild(productQuantity);
+  cartDetailsWrapper.appendChild(productPrice);
+  cartDetailsWrapper.appendChild(removeItemButton);
+
+  cartItemDiv.append(img);
+  cartItemDiv.append(cartDetailsWrapper);
 
   return cartItemDiv;
 }
@@ -97,7 +97,7 @@ function cartContent() {
     const checkoutContainer = document.querySelector("#checkout-button");
 
     if (!cartProductsDiv || !checkoutContainer) {
-      throw new Error("Cart products could not be found");
+      throw new Error("Cart products could not be found, please reload the page");
     }
 
     cartProductsDiv.innerHTML = "";
@@ -119,22 +119,33 @@ function cartContent() {
       totalPriceElement.textContent = `Total Price: NOK ${totalPrice.toFixed(2)}`;
       totalPriceElement.className = "total-price";
 
-      cartProductsDiv.appendChild(totalPriceElement);
+      const cartSummaryWrapper = document.createElement("div");
+      cartSummaryWrapper.className = "cart-checkout";
+
+      const cartSummary = document.createElement("h3");
+      cartSummary.textContent = "CART SUMMARY:";
+      cartSummary.className = "cart-summary"
+      cartSummaryWrapper.appendChild(cartSummary);
+
+      cartSummaryWrapper.appendChild(totalPriceElement);
 
       if(checkoutContainer.innerHTML === "") {
         const checkoutButton = document.createElement("button");
         checkoutButton.textContent ="Buy Now";
+        checkoutButton.className = "second-button";
+        checkoutButton.id = "buy-now-button"
         checkoutButton.addEventListener("click", () => {
           clearCart();
           window.location.href = "./confirmation/index.html";
         });
 
-        checkoutContainer.appendChild(checkoutButton);
+        cartSummaryWrapper.appendChild(checkoutButton);
+        cartProductsDiv.appendChild(cartSummaryWrapper);
       }
+      
     }
   } catch (error) {
-    console.log("Error loading cart content:", error);
-    alert(
+    alertUser(
       "Sorry, we're having trouble loading your cart. Please try to refresh the page");
   }
 }
@@ -154,7 +165,7 @@ function removeFromCart(itemsToRemove) {
     cartContent();
 
   } catch (error) {;
-    alert("Something went wrong while removing items from your cart. Please try to reload the page");
+    alertUser("Something went wrong while removing items from your cart. Please try to reload the page");
   }
 }
 

@@ -1,6 +1,7 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon} from "./utils/updateCartIcon.mjs";
+import { alertUser} from "./utils/errorHandler.mjs";
 
 document.addEventListener("DOMContentLoaded", () => {
   updateCartIcon();
@@ -12,7 +13,7 @@ function scrollDownButton (){
   if(targetSection){
     targetSection.scrollIntoView({behavior: "smooth"});
   } else {
-    alert("Sorry, we could not find this page right now");
+    alertUser("Sorry, we could not find this page right now, please reload the page");
   }
 }
 
@@ -24,13 +25,9 @@ document.addEventListener ("DOMContentLoaded", () => {
       scrollDownButton();
     });
   } else {
-    alert("Sorry, something went wrong!");
+    alertUser("Sorry, something went wrong, please reload the page");
   }
 });
-
-
-const genderMen = "Male";
-const genderWomen = "Female";
 
 function generateRainydaysProductHtml(product) {
   const containerDiv = document.createElement("div");
@@ -76,13 +73,13 @@ async function displayRainydaysProducts(products, genderSelection) {
     if (genderSelection === "Female" || genderSelection === "Male") {
         filteredProducts = products.filter(product => product.gender === genderSelection); 
     }
-    //This is a function
+  
     filteredProducts.forEach((product) => {
         const rainydaysHtml = generateRainydaysProductHtml(product);
         displayContainer.appendChild(rainydaysHtml);
     });
   } else {
-    alert ("Sorry, something went wrong");
+    alertUser("Failed to retrieve product information, please reload the page");
   }
 }
 
@@ -92,14 +89,15 @@ async function main() {
     displayRainydaysProducts(rainydaysProducts);
 
     const select = document.querySelector("#gender");
-    select.addEventListener("change", function(){
-        console.log("Inside event listener", select.value);
+    if(select) {
+      select.addEventListener("change", function() {
         displayRainydaysProducts(rainydaysProducts, select.value);
-
-    })
-
+    });
+    } else {
+      alertUser("Could not find the gender selection element, please reload the page")
+    }
   } catch (error) {
-    console.log(error);
+    alertUser("An error occurred while loading the products, please reload the page")
   }
 }
   

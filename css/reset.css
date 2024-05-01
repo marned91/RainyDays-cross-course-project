@@ -31,7 +31,7 @@ p, .terms-content li, .privacy-content li, footer a{
     font-size: 13px;
 }
 
-.button, .nav-desktop li, .nav-mobile li {
+.button, .nav-desktop li, .nav-mobile li, .second-button {
     font-size: 16px;
 }
 
@@ -49,7 +49,7 @@ p, .terms-content li, .privacy-content li, footer a{
     transform: scale(1.15);
 }
 
-h3, p, .button, .terms-content li, .privacy-content li, .cart-count {
+h3, p, .button, .terms-content li, .privacy-content li, .cart-count, .second-button {
     font-family: "public Sans";
 }
 
@@ -65,7 +65,7 @@ nav a, footer, label, input {
     width: 100px;
 }
 
-.header, footer, .button {
+.header, footer, .button, .second-button {
     background-color: black;
 }
 
@@ -95,7 +95,7 @@ nav a, footer, label, input {
     padding-inline-start: 0px;
 }
 
-.nav-desktop li, .button{
+.nav-desktop li, .button, .second-button{
     display: inline-block;
 }
 
@@ -107,7 +107,7 @@ nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a,
     text-decoration: none;
 }
 
-.hamburger-icon, .fa-solid, nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a, .button {
+.hamburger-icon, .fa-solid, nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a, .button, .second-button {
     color: white;
 }
 
@@ -169,10 +169,13 @@ footer a {
     font-weight: bold;
 }
 
-.button {
-    padding: 5px 60px;
+.button, .second-button {
+    padding: 8px 50px;
     border-radius: 10px;
     border: none;
+}
+
+.button {
     object-fit: cover;
     transition: transform 200ms ease-in;
 }
@@ -213,12 +216,12 @@ footer a {
 }
 
 #sizes, #gender{
-    width: 150px;
+    width: 180px;
     background-color: #757579;
     padding: 5px 10px;
     color: white;
     border-radius: 10px;
-    height: 30px;
+    height: 35px;
   }
 
 

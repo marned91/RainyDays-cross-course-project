@@ -1,6 +1,7 @@
 import { doFetch } from "./utils/doFetch.mjs";
 import { API_RAINYDAYS_PRODUCTS } from "./constant.mjs";
 import { updateCartIcon } from "./utils/updateCartIcon.mjs";
+import { alertUser } from "./utils/errorHandler.mjs";
 
 document.addEventListener("DOMContentLoaded", updateCartIcon);
 
@@ -18,16 +19,17 @@ async function fetchProductDetails(productId) {
     }
     return product;
   } catch (error) {
-    alert("Ooops, failed to fetch product details.");
+    alertUser(error.message);
   }
 }
 
 async function renderProduct() {
   const productContainer = document.querySelector("#product-details");
   const sizeSelect = document.querySelector("#sizes");
+  const addToCartContainer = document.querySelector("#purchase-button");
 
-  if (!productContainer || !sizeSelect) {
-    alert("Page structure is incomplete. Please reload.");
+  if (!productContainer || !sizeSelect || !addToCartContainer) {
+    alertUser("Page structure was incomplete, please reload the page");
     return;
   }
 
@@ -36,18 +38,21 @@ async function renderProduct() {
   const product = await fetchProductDetails(productId);
 
   if(!product) {
-    alert("The product data was unavailable, please try to relead the page");
+    alertUser("The product data was unavailable, please relead the page");
     return;
   }
 
-  sizeSelect.innerHTML = "";
-
   const title = document.createElement("h2");
   title.textContent = product.title;
+  title.className = "product-h2";
 
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
+  img.className = "product-img";
+
+  const productDetailsDiv = document.createElement("div");
+  productDetailsDiv.className = "product-details-wrapper";
 
   const description = document.createElement("p");
   description.textContent = product.description;
@@ -58,11 +63,20 @@ async function renderProduct() {
   const price = document.createElement("p");
   price.textContent = `NOK ${product.price}`;
 
-  productContainer.appendChild(title);
   productContainer.appendChild(img);
-  productContainer.appendChild(description);
-  productContainer.appendChild(color);
-  productContainer.appendChild(price);
+
+  productDetailsDiv.appendChild(title);
+  productDetailsDiv.appendChild(description);
+  productDetailsDiv.appendChild(color);
+  productDetailsDiv.appendChild(price);
+
+  productDetailsDiv.appendChild(sizeSelect);
+  productDetailsDiv.appendChild(addToCartContainer);
+
+
+  productContainer.appendChild(productDetailsDiv);
+
+  sizeSelect.innerHTML = "";
 
   if (product.sizes && product.sizes.length > 0) {
     product.sizes.forEach((size) => {
@@ -72,7 +86,7 @@ async function renderProduct() {
       sizeSelect.appendChild(option);
     });
   } else {
-    alert("Product sizes is not defined");
+    alertUser("Product sizes are not defined");
   }
 
   let selectedSize = sizeSelect.value;
@@ -83,14 +97,15 @@ async function renderProduct() {
 
   const addToCartButton = document.createElement("button");
   addToCartButton.textContent = "Add to cart";
-  addToCartButton.className = "button";
+  addToCartButton.className = "second-button";
 
   addToCartButton.addEventListener("click", () => {
     addToCart(product, selectedSize);
     updateCartIcon();
   });
 
-  productContainer.appendChild(addToCartButton);
+  addToCartContainer.appendChild(addToCartButton);
+
 }
 
 
@@ -117,6 +132,8 @@ function addToCart(product, size) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert(`You just added ${product.title} in size ${size} to your cart`);
 
   updateCartIcon();
 }
