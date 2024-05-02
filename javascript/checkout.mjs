@@ -105,6 +105,7 @@ function cartContent() {
     if (cart.length === 0) {
       const emptyCartMessage = document.createElement("p");
       emptyCartMessage.textContent = "Looks like you have not added anything to your cart yet!";
+      emptyCartMessage.className = "empty-cart-text";
       cartProductsDiv.appendChild(emptyCartMessage);
 
       checkoutContainer.innerHTML = "";

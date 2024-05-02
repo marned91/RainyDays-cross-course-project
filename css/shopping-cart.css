@@ -1,3 +1,7 @@
+.empty-cart-text {
+    padding-bottom: 300px;
+}
+
 #checkout-message {
     display: flex;
     gap: 40px;
