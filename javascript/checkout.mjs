@@ -108,7 +108,7 @@ function cartContent() {
       emptyCartMessage.className = "empty-cart-text";
 
       const emptyCartImage = document.createElement("img");
-      emptyCartImage.src = "../css/Images/empty_cart_image.png";
+      emptyCartImage.src = "./css/images/empty_cart_image.png";
       emptyCartImage.alt = "person holding an umbrella on a stormy beach";
       emptyCartImage.className = "empty-cart-img";
 
