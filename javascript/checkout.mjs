@@ -106,7 +106,14 @@ function cartContent() {
       const emptyCartMessage = document.createElement("p");
       emptyCartMessage.textContent = "Looks like you have not added anything to your cart yet!";
       emptyCartMessage.className = "empty-cart-text";
+
+      const emptyCartImage = document.createElement("img");
+      emptyCartImage.src = "../css/images/empty_cart_image.png";
+      emptyCartImage.alt = "person holding an umbrella on a stormy beach";
+      emptyCartImage.className = "empty-cart-img";
+
       cartProductsDiv.appendChild(emptyCartMessage);
+      cartProductsDiv.appendChild(emptyCartImage);
 
       checkoutContainer.innerHTML = "";
     } else {
