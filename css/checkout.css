@@ -1,7 +1,8 @@
 #cart-products {
   grid-template-columns: 1fr 2fr; 
   grid-template-rows: auto auto; 
-  gap: 40px;  
+  gap: 40px; 
+  padding-bottom: 350px;
 }
 
 #cart-products, .cart-checkout {
@@ -36,7 +37,7 @@
   width: 40%; 
 }
 
-.item_img, .empty-cart-img {
+.item_img{
   height: auto;
 }
 
@@ -71,10 +72,6 @@
   font-size: 18px;
 }
 
-.empty-cart-img {
-  width: 100%; 
-}
-
 /*mobile and small tablets*/
 @media screen and (min-width: 300px) and (max-width: 600px){
   .cart-item {
@@ -100,7 +97,7 @@
     margin: 20px;
   }
 
-  #buy-now-button, .empty-cart-img   {
+  #buy-now-button  {
     grid-column: span 2; 
   }
 
