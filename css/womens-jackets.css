@@ -1,0 +1,65 @@
+#womens-jackets-h1 {
+  position: absolute;
+  left: 70px;
+  top: 25%;
+}
+
+.womens-jackets-main-img, .womens-jackets-img {
+  width: 100%;
+  height: auto;
+}
+
+.womens-jackets-intro {
+  margin: auto;
+}
+
+.womens-wrapper {
+  display: grid;
+  gap: 20px;
+  margin: auto;
+  padding: 40px 10px 100px 10px;
+}
+
+.womens-jackets-container:hover {
+  transform: scale(1.05);
+  transition: transform 200ms ease-out;
+}
+
+/*mobile and small tablets*/
+@media screen and (min-width: 300px) and (max-width: 600px){
+  .womens-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  #womens-jackets-h1 {
+    left: 30px;
+    top: 20%;
+  }
+
+}
+
+/*smaller and lagrer tablets*/
+@media screen and (min-width: 601px) and (max-width: 900px) {
+  .womens-wrapper {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  #womens-jackets-h1 {
+    left: 50px;
+    top: 25%;
+  }
+
+}
+
+/*laptop and desktop*/
+@media screen and (min-width: 901px) and (max-width: 20000px){
+  .womens-wrapper {
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  #womens-jackets-h1 {
+    left: 70px;
+    top: 25%;
+  }
+
+}

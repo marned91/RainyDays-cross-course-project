@@ -69,6 +69,10 @@ nav a, footer, label, input {
     background-color: black;
 }
 
+.h1-black {
+    color: black;
+}
+
 .header, footer, .logo {
     display: flex;
     align-items: center;
@@ -107,7 +111,7 @@ nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a,
     text-decoration: none;
 }
 
-.hamburger-icon, .fa-solid, nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a, .button, .second-button {
+.hamburger-icon, .fa-solid, nav a:visited, nav a, nav a:active, footer a:active, footer a:visited, footer a, .button, .second-button, .h1-white {
     color: white;
 }
 
