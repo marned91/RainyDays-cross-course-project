@@ -300,4 +300,8 @@ footer a {
         gap: 200px;
     }
 
+    .nav-desktop{
+        margin-left: 80px;
+    }
+
 }
