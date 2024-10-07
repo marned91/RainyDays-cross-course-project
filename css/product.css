@@ -2,11 +2,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    gap: 20px;
-    padding-bottom: 40px;
+    gap: 50px;
+    padding:40px;
+    margin: auto;
 }
 
-#product-details, .product-img, #purchase-button {
+.product-img, #purchase-button {
     margin-top: 40px;
 }
 
@@ -43,7 +44,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 10px;
-        padding-bottom: 20px;
+        padding: 20px;
     }
 
     .product-img {
@@ -71,7 +72,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 10px;
-        padding-bottom: 20px;
+        padding: 20px;
     }
 
     .product-img {
