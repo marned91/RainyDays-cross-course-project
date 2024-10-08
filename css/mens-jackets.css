@@ -4,23 +4,44 @@
   top: 25%;
 }
 
-.mens-jackets-main-img, .mens-jackets-img {
-  width: 100%;
-  height: auto;
-}
-
 .mens-jackets-intro {
   margin: auto;
 }
 
-.mens-wrapper {
-  display: grid;
-  gap: 20px;
-  margin: auto;
-  padding: 40px 10px 100px 10px;
+.mens-jackets-main-img {
+  width: 100%;
+  height: auto;
 }
 
-.mens-jackets-container:hover {
+.mens-jacket-img {
+  height: 300px;
+  width: auto;
+}
+
+.mens-wrapper {
+  display: grid;
+  gap: 20px 30px;
+  margin: 30px;
+  padding: 100px 0px 100px 0px;
+}
+
+.mens-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.mens-product, .mens-wrapper {
+  align-items: center;
+}
+
+
+.mens-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mens-product:hover {
   transform: scale(1.05);
   transition: transform 200ms ease-out;
 }
@@ -29,6 +50,7 @@
 @media screen and (min-width: 300px) and (max-width: 600px){
   .mens-wrapper {
     grid-template-columns: 1fr;
+    padding: 40px 10px 100px 10px;
   }
 
   #mens-jackets-h1 {
